@@ -19,6 +19,7 @@ out.print("<div id='head_line'><div id='head_menu'><ul><li><b>"+s_name+"님</b><
 		<li><a href="./all_user.jsp">유저 조회,삭제 및 권한부여</a></li>
 		<li><a href="./all_book.jsp">장서조회 및 삭제</a></li>
 		<li><a href="./coll_insert_form.jsp">장서추가</a></li>
+		<li><a href="./back_book.jsp">반납 업무</a></li>
 	</ul>
 </body>
 </html>

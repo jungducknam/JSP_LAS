@@ -12,8 +12,9 @@
 	<%
 		userDAO udao = new userDAO();
 	
-		String s_id = (String)session.getAttribute("user_name");
+		String s_id = (String)session.getAttribute("user_id");
 		String[] isbn_list = request.getParameterValues("book_isbn");
+		
 		
 		int possible_loan_count = 5-udao.countcheck(s_id);
 		

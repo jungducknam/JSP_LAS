@@ -194,18 +194,19 @@ public class userDAO {
 	
 	public ArrayList<ArrayList<String>> readDB_loans(String id) {
 		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
-		ArrayList<String> line = new ArrayList<String>();
 		String where_cond = "";
-		String sql = "select c.title,l.isbn to_char(l.getday,'yy-mm-dd'), to_char(l.checkday,'yy-mm-dd'),to_char(l.backday,'yy-mm-dd') from loans l join collections c on c.isbn = l.isbn";
+		String sql = "select c.title, l.isbn, to_char(l.getday,'yy-mm-dd'), to_char(l.checkday,'yy-mm-dd'), to_char(l.backday,'yy-mm-dd') from loans l join collections c on c.isbn = l.isbn";
 		if(id!=null) {
-			where_cond = " where id = "+id;
+			where_cond = " where l.id = '"+id+"'";
 		}
 		sql = sql+where_cond;
+		
 		try {
 			con=DBCon.getCon();
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
+				ArrayList<String> line = new ArrayList<String>();
 				line.add(rs.getString(1));
 				line.add(rs.getString(2));
 				line.add(rs.getString(3));
@@ -215,7 +216,8 @@ public class userDAO {
 			}
 		}
 		catch(Exception e) {
-			System.out.println("아이디 read오류");
+			e.printStackTrace();
+			System.out.println("아이디 대출이력 read오류");
 		}
 		finally {
 			DBCon.close(con, ps, rs);
@@ -523,6 +525,7 @@ public class userDAO {
 			ps.executeUpdate();
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			System.out.println("대출일 연장 오류");
 		}
 		finally {

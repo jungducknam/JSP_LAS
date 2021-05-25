@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" href = "./css/style.css?after?ver=1" type = "text/css">
+</head>
+<body>
+    <div id="head_line"><div id="head_menu"><ul><li><a href="./login.html">로그인</a></li><li><a href="./yakgwan.html">회원가입</a></li></ul></div></div>
+	<nav id="top-menu">
+		<div class="nav_box">
+			<ul>
+				<li><a href="./main.html"><img id="logo_style" src="./img/liblogo.png"></a></li>
+				<li class="dropdown">
+					<button>자료검색</button>
+					<div class="dropdown-content">
+						<a href="#">통합검색</a>
+						<a href="#">작가검색</a>
+						<a href="#">출판사검색</a>
+					</div>
+				</li>
+				<li class="dropdown">
+					<button>나의 도서관</button>
+					<div class="dropdown-content">
+						<a href="#">대출,예약,연장</a>
+						<a href="#">자료구입요청</a>
+						<a href="#">신착자료알림</a>
+					</div>
+				</li>
+				<li class="dropdown">
+					<button>도서관서비스</button>
+					<div class="dropdown-content">
+						<a href="#">도서관일정</a>
+						<a href="#">도서관견학신청</a>
+						<a href="#">문화행사</a>
+					</div>
+				</li>
+				<li class="dropdown">
+					<button>커뮤니티</button>
+					<div class="dropdown-content">
+						<a href="#">공지사항</a>
+						<a href="#">자료실</a>
+						<a href="#">자유게시판</a>
+						<a href="#">사서에게 물어보세요</a>
+					</div>
+				</li>
+				<li class="dropdown">
+					<button>사이트맵</button>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<article class="container">
+		<div class="item1" id="main_back_img">
+			<form id = "search_box_form" action="./search_book.html" method="get" onsubmit="check()">
+				<fieldset id="search_box">
+					<input id = "input_one" type="text" title="검색어 입력." name="search" placeholder="  검색어를 입력하세요.">
+					<!--<button id= "input_two" type="submit">-->
+					<input type="image" id = "input_two" src = "./img/searchBtn.png" alt="검색" title = "검색">
+				</fieldset>
+			</form>
+		</div>
+		<div class="item4">
+			<div style="width:20%;height:65%;margin-left: 20%; margin-top: 1%;"><h1 style="color:whitesmoke;font-size:30px;">검색결과</h1></div>
+        </div>
+		<div style="width:80%;margin:0 auto;">
+			<div id="search_side">
+				<div class="item1_1">asdasd</div>
+				<div class="item1_1">asdasd</div>
+				<div class="item1_1">asdasd</div>
+				<div class="item1_1">asdasd</div>
+				<div class="item1_1">asdasd</div>
+			</div>
+			<ul id="search_item">
+				<li id="list_item">
+					<div id="check_box">
+						<span><b>1.</b></span><br>
+						<input type="checkbox" name="book" value="book_isbn_num">
+					</div>
+					<div id="book_image">
+						<img src = "./img/book_sample.png">
+					</div>
+					<div id="book_info">
+						<ul>
+							<li id="title">제목</li>
+							<li id="author">저자</li>
+							<li id="publisher">출판사</li>
+							<li id="pub_year">출판연도</li>
+						</ul>
+					</div>
+				</li>
+				<li id="list_item">asdasds</li>
+				<li id="list_item">asdasds</li>
+				<li id="list_item">asdasds</li>
+				<li id="list_item">asdasds</li>
+			</ul>
+		</div>
+		<footer style="background-color: grey; width:100%; height:300px; overflow: visible;">
+			<div>By JungDuck Nam </div>
+			<div>tel:000 0000 0000</div>
+			<div>Inspired by Dongsan Library, ILUS Demo</div>
+		</footer>
+    </article>
+	
+</body>
+</html>

@@ -64,7 +64,7 @@
 </script>
 </head>
 <body id="id_body">
-<div id="box-main" style="width:50%; height:40%; margin:0 auto; padding-bottom:3%;">
+<div id="box-main" style="width:60%; height:80%; margin:0 auto; padding-bottom:3%;">
 <div style="margin:auto; padding:5%">
 	<form action="join_process.jsp" method=post name="fm" onsubmit="return onCheck()">
 		<table border="1" cellpadding="5">

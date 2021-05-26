@@ -45,6 +45,7 @@
 		<hr>
 		<div>
 		<table style="margin:auto">
+			<tr><td style="color:red;font-size:5px;"><% if(request.getAttribute("alert")==null){out.print("");} else{out.print(request.getAttribute("alert"));} %></td></tr>
 			<tr>
 				<td><a href="./yakgwan.jsp"><input type="button" value="회원가입"></a></td>
 				<td><a href='#'><input type="button" value="ID/PW 찾기(미구현)"></a></td>

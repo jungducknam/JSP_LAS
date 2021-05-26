@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%
+	Object s_name = session.getAttribute("user_name");
+	Object s_ad = session.getAttribute("ad_level");
+	if(s_ad==null){}
+	else{
+		pageContext.forward("./adminmenu.jsp");
+	}
+
+%>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href = "./css/style.css?ver=2" type = "text/css">
+<link rel="stylesheet" href = "./css/style.css" type = "text/css">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="./css/jquery.bxslider.css" rel="stylesheet" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -15,20 +25,8 @@
 <title>LAS-메인</title>
 </head>
 <body>
-<%
-Object s_name = session.getAttribute("user_name");
-Object s_id = session.getAttribute("user_id");
-Object s_ad = session.getAttribute("adcheck");
-session.setAttribute("user_name",(String)s_name);
-session.setAttribute("user_id",(String)s_id);
-session.setAttribute("adcheck",(String)s_ad);
-%>
-	<jsp:include page="./header.jsp">
-		<jsp:param name="s_name" value="<%=(String)s_name %>"/>
-		<jsp:param name="s_ad" value="<%=(String)s_ad %>"/>
-	</jsp:include>
+	<jsp:include page="./header.jsp"/>
 	<jsp:include page="./nav.jsp"/>
-	
 	<article class="container">
 		<div class="item1" id="main_back_img">
 			<form id = "search_box_form" action="./search_book.jsp" method="get" onsubmit="check()">

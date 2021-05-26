@@ -7,12 +7,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
-public class Read_marc{
-	
-	static Scanner scan = new Scanner(System.in);
-	
+public class Read_marc{	
 	private ArrayList<ArrayList<String>> MARC = new ArrayList<ArrayList<String>>();
 	private Book book;
 	
@@ -117,27 +113,27 @@ public class Read_marc{
 					break;
 				case "245":
 					//TITLE
+					String TITLE="";
+					String CO_AUTHOR="";
 					for(int index=2;index<marcLine.size();index++) {
-						String TITLE = null;
-						String CO_AUTHOR = null;
 						if(marcLine.get(index).startsWith("a")) {TITLE += marcLine.get(index).substring(1);}
 						if(marcLine.get(index).startsWith("b")) {TITLE += marcLine.get(index).substring(1);}
-						if(marcLine.get(index).startsWith("p")) {TITLE += " "+marcLine.get(index).substring(1);}
-						if(marcLine.get(index).startsWith("n")) {TITLE += " "+marcLine.get(index).substring(1);}
-						if(marcLine.get(index).startsWith("d")) {book.setAUTHOR(marcLine.get(index).substring(1));}
+						if(marcLine.get(index).startsWith("d")) {book.setAUTHOR(replaceSideStr(marcLine.get(index).substring(1)));}
 						if(marcLine.get(index).startsWith("e")) {CO_AUTHOR += marcLine.get(index).substring(1);}
-						if(TITLE!=null) {
-							book.setTITLE(TITLE);
-						}
-						if(CO_AUTHOR!=null) {
-							book.setCO_AUTHOR(CO_AUTHOR);
-						}
+						if(marcLine.get(index).startsWith("n")) {TITLE += " "+marcLine.get(index).substring(1);}
+						if(marcLine.get(index).startsWith("p")) {TITLE += " "+marcLine.get(index).substring(1);}
+					}
+					if(!TITLE.equals("")) {
+						book.setTITLE(replaceSideStr(TITLE));
+					}
+					if(!CO_AUTHOR.equals("")) {
+						book.setCO_AUTHOR(CO_AUTHOR);
 					}
 					break;
 				case "260":
 					//publisher,pub_year
 					for(int index=2;index<marcLine.size();index++) {
-						if(marcLine.get(index).startsWith("b")) {book.setPUBLISHER(marcLine.get(index).substring(1));}
+						if(marcLine.get(index).startsWith("b")) {book.setPUBLISHER(replaceSideStr(marcLine.get(index).substring(1)));}
 						if(marcLine.get(index).startsWith("c")) {book.setPUB_YEAR(marcLine.get(index).substring(1));}
 					}
 					break;
@@ -155,7 +151,7 @@ public class Read_marc{
 	//public String getTAG(int index){return book.get(index);}
 	
 	public String replaceSideStr(String str) {
-		return str.replaceAll("[^A-Za-z가-힣0-9 .]++", "").trim();
+		return str.replaceAll("[^A-Za-z가-힣0-9 .-]++", "").trim();
 	}
 	
 	

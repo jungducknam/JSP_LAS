@@ -251,7 +251,7 @@ nav div ul li button{
 }
 #head_menu > ul {float:right; margin-top:12px; margin-left:auto; list-style:none;}
 #head_menu > ul > li {float:left; margin:0 10px; }
-#head_menu > ul > li > a {text-decoration:none;transition:color 0.5s;color:white;}
+#head_menu ul li a {text-decoration:none;transition:color 0.5s;color:white;}
 
 #head_memu a:visited{
 	color:white;
@@ -503,6 +503,8 @@ nav div ul li button{
 
 
 #footer{
+	position:relative;
+	bottom:0;
 	color:#E7E7E7;
 	font-size:12px;
 	text-align: center;
@@ -518,4 +520,10 @@ nav div ul li button{
 	font-size:15px;
 	font-weight: bold;
 	color:black;
+}
+
+#mypage{
+	width:80%;
+	height:80%;
+	margin:auto;
 }

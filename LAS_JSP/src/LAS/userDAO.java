@@ -197,7 +197,10 @@ public class userDAO {
 		String where_cond = "";
 		String sql = "select c.title, l.isbn, to_char(l.getday,'yy-mm-dd'), to_char(l.checkday,'yy-mm-dd'), to_char(l.backday,'yy-mm-dd') from loans l join collections c on c.isbn = l.isbn";
 		if(id!=null) {
-			where_cond = " where l.id = '"+id+"'";
+			where_cond = " where l.id = '"+id+"' and l.backday is null";
+		}
+		else {
+			where_cond = " where l.backday is null";
 		}
 		sql = sql+where_cond;
 		
@@ -532,4 +535,23 @@ public class userDAO {
 			DBCon.close(con, ps, rs);
 		}	
 	}
+	
+	public void dbUpdate_loan_back(String id,String isbn) {
+		String sql = "update loans set backday = sysdate where id = ? and isbn = ?";
+		try {
+			con = DBCon.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setString(1,id);
+			ps.setString(2,isbn);	
+			ps.executeUpdate();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("반납 처리 오류");
+		}
+		finally {
+			DBCon.close(con, ps, rs);
+		}	
+	}
+
 }

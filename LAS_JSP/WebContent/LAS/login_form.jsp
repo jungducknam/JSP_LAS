@@ -34,7 +34,7 @@
 				 	<td><span style="width:10%;">ID:</span></td><td><input id="userid" type="text" name="userid"></td>
 				</tr>
 				<tr>
-					<td><span style="width:10%;">PW: </span></td><td><input id="userpw" type="text" name="userpw"></td>
+					<td><span style="width:10%;">PW: </span></td><td><input id="userpw" type="password" name="userpw"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type='submit' value="로그인" style="width:100%; margin-top:5%"></td>

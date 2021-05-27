@@ -10,6 +10,17 @@
 <head>
 	<meta charset="UTF-8">
     <link rel="stylesheet" href = "./css/style.css" type = "text/css">
+    <script>
+    	function select_form(index){
+    		if(index==1){
+    			document.book_result.action='./loan_process.jsp';
+    		}
+    		else if(index==2){
+    			document.book_result.action='./reservation_process.jsp';
+    		}
+    		document.book_result.submit();
+    	}
+    </script>
 </head>
 <body>
     <jsp:include page="./header.jsp"/>
@@ -42,9 +53,11 @@
 				<div class="item1_1">asdasd</div>
 			</div>
 			
-			<form action="loan_process.jsp" method="post">
+			<!-- <form action="loan_process.jsp" method="post" name="book_result"> -->
+			<form method="post" name="book_result">
 				<ul id="search_item">
-				<li><input type="submit" value="대출"></li>
+				<li style="display:inline-block"><input type="button" value="대출" onclick="select_form(1)"></li>
+				<li style="display:inline-block"><input type="button" value="예약" onclick="select_form(2)"></li>
 				<% for(int i=0;i<book_list.size();i++){
 					Book book = book_list.get(i);
 					String isbn = book.getISBN();

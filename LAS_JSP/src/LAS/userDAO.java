@@ -229,7 +229,7 @@ public class userDAO {
 	}
 	
 	public int countcheck(String id) {
-		String sql="select count(*) from loans where id = '"+id+"'";
+		String sql="select count(*) from loans where id = '"+id+"' and backday is null";
 		int count=0;
 		try {
 			con=DBCon.getCon();

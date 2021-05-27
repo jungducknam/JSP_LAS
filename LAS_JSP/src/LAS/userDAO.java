@@ -508,10 +508,13 @@ public class userDAO {
 			ps = con.prepareStatement(sql);
 			ps.setString(1,user.getName());
 			ps.setDate(2,user.getBirth());	
+			ps.setString(3,user.getPhone());
+			ps.setString(4,user.getAddress());
+			ps.setString(5,user.getID());
 			ps.executeUpdate();
 		}
 		catch(Exception e) {
-			System.out.println("record update 오류(level)");
+			System.out.println("record update 오류(유저정보)");
 		}
 		finally {
 			DBCon.close(con, ps, rs);

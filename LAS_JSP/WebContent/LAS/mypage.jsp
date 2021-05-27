@@ -44,6 +44,8 @@
 	<jsp:include page="./header.jsp"/>
 	<div style="width:100%;height:84.6%;">
 		<div id="my_item1">
+			<a href="./main.jsp"><input type="button" value="메인으로 돌아가기"></a>
+			<a href="./user_update.jsp"><input type="button" value="정보 수정하기"></a>
 			<table>
 				<tr><th style='width:40px;'>번호</th><th>서명</th><th>대출일</th><th>반납예정일</th><th>연장</th></tr>
 <%

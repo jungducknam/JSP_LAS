@@ -46,11 +46,12 @@
         </div>
 		<div style="width:80%;margin:0 auto;">
 			<div id="search_side">
-				<div class="item1_1">asdasd</div>
-				<div class="item1_1">asdasd</div>
-				<div class="item1_1">asdasd</div>
-				<div class="item1_1">asdasd</div>
-				<div class="item1_1">asdasd</div>
+				<div id="search_side_head">검색 </div>
+				<div id="search_side_item">asdasd</div>
+				<div id="search_side_item">asdasd</div>
+				<div id="search_side_item">asdasd</div>
+				<div id="search_side_item">asdasd</div>
+				<div id="search_side_item">asdasd</div>
 			</div>
 			
 			<!-- <form action="loan_process.jsp" method="post" name="book_result"> -->
@@ -58,32 +59,33 @@
 				<ul id="search_item">
 				<li style="display:inline-block"><input type="button" value="대출" onclick="select_form(1)"></li>
 				<li style="display:inline-block"><input type="button" value="예약" onclick="select_form(2)"></li>
-				<% for(int i=0;i<book_list.size();i++){
-					Book book = book_list.get(i);
-					String isbn = book.getISBN();
-					out.print("<li id='list_item'>");
-						out.print("<div id='check_box'>");
-							out.print("<span><b>"+(i+1)+".</b></span><br>");
-							out.print("<input type='checkbox' name='book_isbn' value='"+isbn+"'>");
-						out.print("</div>");
-						out.print("<div id='book_image'>");
-							out.print("<img src = './img/book_sample.png'>");
-						out.print("</div>");
-						out.print("<div id='book_info'>");
-							out.print("<ul>");
-								out.print("<li id='title'>"+book.getTITLE()+"</li>");
-								out.print("<li id='author'>"+book.getAUTHOR()+"</li>");
-								out.print("<li id='publisher'>"+book.getPUBLISHER()+"</li>");
-								out.print("<li id='pub_year'>"+book.getPUB_YEAR()+"</li>");
-								if(udao.loancheck(book.getISBN())){
-									out.print("<li id='loan' style='color:red;'>"+"대출중"+"</li>");
-								}
-								else{
-									out.print("<li id='loan' style='color:#0041C2;'>"+"대출 가능"+"</li>");
-								}
-							out.print("</ul>");
-						out.print("</div>");
-					out.print("</li>");
+				<% 
+					for(int i=0;i<book_list.size();i++){
+						Book book = book_list.get(i);
+						String isbn = book.getISBN();
+						out.print("<li id='list_item'>");
+							out.print("<div id='check_box'>");
+								out.print("<span><b>"+(i+1)+".</b></span><br>");
+								out.print("<input type='checkbox' name='book_isbn' value='"+isbn+"'>");
+							out.print("</div>");
+							out.print("<div id='book_image'>");
+								out.print("<img src = './img/book_sample.png'>");
+							out.print("</div>");
+							out.print("<div id='book_info'>");
+								out.print("<ul>");
+									out.print("<li id='title'>"+book.getTITLE()+"</li>");
+									out.print("<li id='author'>"+book.getAUTHOR()+"</li>");
+									out.print("<li id='publisher'>"+book.getPUBLISHER()+"</li>");
+									out.print("<li id='pub_year'>"+book.getPUB_YEAR()+"</li>");
+									if(udao.loancheck(book.getISBN())){
+										out.print("<li id='loan' style='color:red;'>"+"대출중"+"</li>");
+									}
+									else{
+										out.print("<li id='loan' style='color:#0041C2;'>"+"대출 가능"+"</li>");
+									}
+								out.print("</ul>");
+							out.print("</div>");
+						out.print("</li>");
 					}
 				%>
 				</ul>

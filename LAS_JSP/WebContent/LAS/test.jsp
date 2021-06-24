@@ -16,7 +16,7 @@
 		Read_marc marc = new Read_marc();
 	
 		/*jsp 기본경로가 C:\eclipse-projects\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\(각 프로젝트 명) 으로 설정되어있음.*/
-		String filepath = request.getRealPath("./marc_data/1.txt");
+		String filepath = request.getRealPath("./marc_data/1.TXT");
 		
 		File file = new File(filepath); //
 		BufferedReader filedata = new BufferedReader(new InputStreamReader(new FileInputStream(file),"utf-8")); //텍스트 파일을 utf-8로 글자로 만들어 출력
@@ -42,11 +42,6 @@
 			out.print("<p>"+marc_list.get(i)+"</p>");
 		}
 		
-		
-		
-		
-		
-
 	
 	%>
 </body>

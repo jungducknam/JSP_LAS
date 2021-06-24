@@ -6,6 +6,7 @@
 <%request.setCharacterEncoding("utf-8"); %>
 <%
 	String path = request.getRealPath("./marc_data/");
+	System.out.println(path);
 	//String path="C:/eclipse-projects/LAS_JSP/WebContent/marc_data/";
 	String filename = request.getParameter("call_marc");
 	

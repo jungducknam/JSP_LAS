@@ -126,6 +126,7 @@ public class userDAO {
 			}
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			System.out.println("book_all 읽기 오류");
 		}
 		finally {
@@ -145,6 +146,48 @@ public class userDAO {
 			ps.setString(3,"%"+cond+"%");
 			rs = ps.executeQuery();
 			
+			while(rs.next()) {
+				Book book = new Book();
+				book.setISBN(rs.getString("isbn"));
+				book.setAUTHOR(rs.getString("author"));
+				book.setCO_AUTHOR(rs.getString("co_author"));
+				book.setTITLE(rs.getString("title"));
+				book.setPUB_YEAR(rs.getString("pub_year"));
+				book.setPUBLISHER(rs.getString("publisher"));
+				book.setKDC(rs.getString("kdc"));
+				book.setDDC(rs.getString("ddc"));
+				book.setSUBJECT(rs.getString("subject"));
+				book.setSET_ISBN(rs.getString("isbn_set"));
+				book.setPRICE(rs.getInt("price"));
+				
+				book_list.add(book);
+			}
+		}
+		catch(Exception e) {
+			System.out.println("book_all 읽기 오류");
+		}
+		finally {
+			DBCon.close(con, ps, rs);
+		}
+		return book_list;
+	}
+	
+	//paging을 위해 새로 만드는중. search_book_list와 함께
+	public List<Book> search_Book(int pageNo,int pageLine,String cond){
+		List<Book> book_list = new ArrayList<Book>();
+		int end = pageNo * pageLine;
+		int start = end - pageLine + 1;
+		
+		String sql = "select rownum,c.* from collections c "
+				+ "where c.title like ? or c.author like ? or c.subject like ? "
+				+ "and rownum between "+start+" and "+end;
+		try {
+			con = DBCon.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setString(1,"%"+cond+"%");
+			ps.setString(2,"%"+cond+"%");
+			ps.setString(3,"%"+cond+"%");
+			rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				Book book = new Book();

@@ -5,6 +5,15 @@
 <%@page import="LAS.Book" %>
 <%@page import ="java.util.*" %>
 
+			<%	
+				String SeqNo = request.getParameter("SEQ_NO");
+				int pageLine = 10;
+				
+				userDAO udao = new userDAO();
+				String cond = request.getParameter("query");
+				List<Book> book_list = udao.search_Book(1,pageLine,cond);
+			%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,14 +45,7 @@
 				</fieldset>
 			</form>
 		</div>
-			<%	
-				userDAO udao = new userDAO();
-				String cond = request.getParameter("query");
-				
-				int pageLine = 10;
-				
-				List<Book> book_list = udao.search_Book(1,pageLine,cond);
-			%>
+
 		<div class="item4">
 			<div style="width:20%;height:65%;margin-left: 20%; margin-top: 1%;"><h1 style="color:whitesmoke;font-size:30px;"><%out.print("검색결과 ("+book_list.size()+"건)"); %></h1></div>
         </div>

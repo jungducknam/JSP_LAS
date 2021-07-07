@@ -7,7 +7,8 @@
 <%
 	String cond = request.getParameter("query");
 	int pageLine = 10;
-	int pageNo = getSession("pageNo");
+	int pageNo = (int)session.getAttribute("pageNo");
+	System.out.println(pageNo);
 	userDAO udao = new userDAO();
 	List<Book> book_list = udao.search_Book(pageNo, pageLine, cond);
 

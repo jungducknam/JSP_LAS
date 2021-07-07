@@ -6,12 +6,7 @@
 <%@page import ="java.util.*" %>
 
 			<%	
-				String SeqNo = request.getParameter("SEQ_NO");
-				int pageLine = 10;
-				
-				userDAO udao = new userDAO();
 				String cond = request.getParameter("query");
-				List<Book> book_list = udao.search_Book(1,pageLine,cond);
 			%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -47,7 +42,7 @@
 		</div>
 
 		<div class="item4">
-			<div style="width:20%;height:65%;margin-left: 20%; margin-top: 1%;"><h1 style="color:whitesmoke;font-size:30px;"><%out.print("검색결과 ("+book_list.size()+"건)"); %></h1></div>
+			<div style="width:20%;height:65%;margin-left: 20%; margin-top: 1%;"><h1 style="color:whitesmoke;font-size:30px;"><%out.print("검색결과"); %></h1></div>
         </div>
 		<div style="width:80%;margin:0 auto;">
 			<div id="search_side">
@@ -60,7 +55,10 @@
 			</div>
 			
 			<!-- <form action="loan_process.jsp" method="post" name="book_result"> -->
-			<jsp:include page="./test_search_book_list.jsp"/>
+			<jsp:include page="./test_search_book_list.jsp">
+				<jsp:param name="cond" value="<%=cond %>"/>
+				<jsp:param name
+			</jsp:include>
 		</div>
 		<jsp:include page="./footer.jsp"/>
     </article>

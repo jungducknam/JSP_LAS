@@ -179,7 +179,7 @@ public class userDAO {
 		int start = end - pageLine + 1;
 		
 		String sql = "select rownum,c.* from collections c "
-				+ "where c.title like ? or c.author like ? or c.subject like ? "
+				+ "where c.title like ? and c.author like ? and c.subject like ? "
 				+ "and rownum between "+start+" and "+end;
 		try {
 			con = DBCon.getCon();

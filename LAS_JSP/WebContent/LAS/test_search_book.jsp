@@ -57,7 +57,7 @@
 			<!-- <form action="loan_process.jsp" method="post" name="book_result"> -->
 			<jsp:include page="./test_search_book_list.jsp">
 				<jsp:param name="cond" value="<%=cond %>"/>
-				<jsp:param name
+				<jsp:param name=""
 			</jsp:include>
 		</div>
 		<jsp:include page="./footer.jsp"/>
